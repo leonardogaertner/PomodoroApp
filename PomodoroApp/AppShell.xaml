@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="PomodoroApp.AppShell" 
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:local="clr-namespace:PomodoroApp" 
+       Title="PomodoroApp" 
+       Shell.FlyoutBehavior="Disabled" >
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout>
+            <Image Source="dotnet_bot.png" WidthRequest="100"></Image>
+            <Label Text="Flyout Header" HorizontalTextAlignment="Center"></Label>
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout>
+            <Image Source="dotnet_bot.png" WidthRequest="100"></Image>
+            <Label Text="Flyout Footer" HorizontalTextAlignment="Center"></Label>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions=".30*,.70" RowDefinitions="*,*,*" ColumnSpacing="10" >
+                <HorizontalStackLayout Grid.Row="0" Spacing="10">
+                    <Image Source="{Binding FlyoutIcon}" WidthRequest="50" HeightRequest="50"></Image>
+                    <Label Text="{Binding Title}"></Label>
+                </HorizontalStackLayout>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" >
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" Icon="dotnet_bot.png"/>
+        <ShellContent Title="Contact Us" ContentTemplate="{DataTemplate local:ContactUs}" Route="ContactUs" Icon="dotnet_bot.png"/>
+        <ShellContent Title="About Us" ContentTemplate="{DataTemplate local:AboutUs}" Route="AboutUs" Icon="dotnet_bot.png"/>
+    </FlyoutItem>
+</Shell>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PomodoroApp.MainPage"
+             Title="Pomodoro Timer">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <!-- App Logo -->
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Pomodoro app logo with .NET bot in a hovercraft" />
+
+            <!-- Title -->
+            <Label
+                Text="Pomodoro Timer"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Main title of the Pomodoro Timer app" />
+
+            <!-- Subtitle -->
+            <Label
+                Text="Boost your productivity with the Pomodoro technique"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Description of the Pomodoro technique for productivity" />
+
+            <!-- Timer Display -->
+            <Label
+                x:Name="TimerLabel"
+                Text="25:00"
+                FontSize="48"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Current time remaining in the Pomodoro timer" />
+
+            <!-- Timer Controls -->
+            <HorizontalStackLayout
+                Spacing="15"
+                HorizontalOptions="Center">
+                <Button
+                    x:Name="StartButton"
+                    Text="Start"
+                    Clicked="StartTimer_Clicked"
+                    SemanticProperties.Hint="Starts the Pomodoro timer" />
+                <Button
+                    x:Name="PauseButton"
+                    Text="Pause"
+                    Clicked="PauseTimer_Clicked"
+                    IsEnabled="False"
+                    SemanticProperties.Hint="Pauses the Pomodoro timer" />
+                <Button
+                    x:Name="ResetButton"
+                    Text="Reset"
+                    Clicked="ResetTimer_Clicked"
+                    IsEnabled="False"
+                    SemanticProperties.Hint="Resets the Pomodoro timer to 25 minutes" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
