@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell x:Class="PomodoroApp.AppShell" 
-       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-       xmlns:local="clr-namespace:PomodoroApp" 
-       Title="PomodoroApp" 
-       Shell.FlyoutBehavior="Disabled" >
+<Shell x:Class="PomodoroApp.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:PomodoroApp"
+       Title="PomodoroApp"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.BackgroundColor="#FFF8E1">
     <Shell.FlyoutHeader>
-        <VerticalStackLayout>
-            <Image Source="dotnet_bot.png" WidthRequest="100"></Image>
-            <Label Text="Flyout Header" HorizontalTextAlignment="Center"></Label>
-        </VerticalStackLayout>
+        <Frame
+            CornerRadius="10"
+            Padding="15"
+            BackgroundColor="White"
+            HasShadow="True"
+            Margin="10">
+            <VerticalStackLayout Spacing="10">
+                <Image Source="tomato.png" WidthRequest="100" Aspect="AspectFit" SemanticProperties.Description="Tomato logo for Pomodoro app" />
+                <Label Text="Pomodoro Power" Style="{StaticResource Headline}" FontSize="24" TextColor="#FF6347" HorizontalTextAlignment="Center" SemanticProperties.Description="Pomodoro app header" />
+            </VerticalStackLayout>
+        </Frame>
     </Shell.FlyoutHeader>
     <Shell.FlyoutFooter>
-        <VerticalStackLayout>
-            <Image Source="dotnet_bot.png" WidthRequest="100"></Image>
-            <Label Text="Flyout Footer" HorizontalTextAlignment="Center"></Label>
-        </VerticalStackLayout>
+        <Frame
+            CornerRadius="10"
+            Padding="15"
+            BackgroundColor="White"
+            HasShadow="True"
+            Margin="10">
+            <VerticalStackLayout Spacing="10">
+                <Image Source="tomato.png" WidthRequest="100" Aspect="AspectFit" SemanticProperties.Description="Tomato logo for Pomodoro app" />
+                <Label Text="Stay Juicy!" Style="{StaticResource SubHeadline}" TextColor="#4CAF50" HorizontalTextAlignment="Center" SemanticProperties.Description="Pomodoro app footer" />
+            </VerticalStackLayout>
+        </Frame>
     </Shell.FlyoutFooter>
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid ColumnDefinitions=".30*,.70" RowDefinitions="*,*,*" ColumnSpacing="10" >
-                <HorizontalStackLayout Grid.Row="0" Spacing="10">
-                    <Image Source="{Binding FlyoutIcon}" WidthRequest="50" HeightRequest="50"></Image>
-                    <Label Text="{Binding Title}"></Label>
-                </HorizontalStackLayout>
-            </Grid>
+            <Frame
+                CornerRadius="10"
+                Padding="10"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="5">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" VerticalOptions="Center">
+                    <Image Source="{Binding FlyoutIcon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" SemanticProperties.Description="Navigation icon" />
+                    <Label Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Headline}" TextColor="#FF6347" VerticalOptions="Center" SemanticProperties.Description="Navigation item title" />
+                </Grid>
+            </Frame>
         </DataTemplate>
     </Shell.ItemTemplate>
-    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" >
-        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" Icon="dotnet_bot.png"/>
-        <ShellContent Title="Contact Us" ContentTemplate="{DataTemplate local:ContactUs}" Route="ContactUs" Icon="dotnet_bot.png"/>
-        <ShellContent Title="About Us" ContentTemplate="{DataTemplate local:AboutUs}" Route="AboutUs" Icon="dotnet_bot.png"/>
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Timer" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" Icon="tomato.png" />
+        <ShellContent Title="Knowledge" ContentTemplate="{DataTemplate local:Knowledge}" Route="Knowledge" Icon="tomato.png" />
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:Setup}" Route="Setup" Icon="tomato.png" />
     </FlyoutItem>
 </Shell>

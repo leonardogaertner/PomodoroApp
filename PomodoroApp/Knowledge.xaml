@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PomodoroApp.Knowledge"
+             Title="Tomato Knowledge"
+             BackgroundColor="#FFF8E1">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,20"
+            Spacing="25">
+            <!-- App Logo -->
+            <Image
+                Source="tomato.png"
+                HeightRequest="120"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Tomato logo for Pomodoro app" />
+
+            <!-- Title -->
+            <Label
+                Text="Tomato Knowledge"
+                Style="{StaticResource Headline}"
+                FontSize="24"
+                TextColor="#FF6347"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Tomato Knowledge page title" />
+
+            <!-- Subtitle -->
+            <Label
+                Text="Get inspired with productivity advice"
+                Style="{StaticResource SubHeadline}"
+                TextColor="#4CAF50"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Description of the Tomato Knowledge page" />
+
+            <!-- Acquire Knowledge Button -->
+            <Frame
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10">
+                <Button
+                    x:Name="AcquireKnowledgeButton"
+                    Text="Acquire Tomato Knowledge"
+                    Clicked="AcquireKnowledge_Clicked"
+                    BackgroundColor="#FF6347"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    Padding="15,10"
+                    HorizontalOptions="Center"
+                    SemanticProperties.Hint="Fetches a random productivity advice" />
+            </Frame>
+
+            <!-- Advice Display -->
+            <Frame
+                x:Name="AdviceFrame"
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10"
+                IsVisible="True">
+                <Label
+                    x:Name="AdviceLabel"
+                    Text="Click the button to get advice!"
+                    FontSize="16"
+                    TextColor="#FF6347"
+                    HorizontalOptions="Center"
+                    SemanticProperties.Description="Random productivity advice" />
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

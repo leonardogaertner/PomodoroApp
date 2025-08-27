@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PomodoroApp.Setup"
+             Title="Pomodoro Settings"
+             BackgroundColor="#FFF8E1">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,20"
+            Spacing="25">
+            <!-- App Logo -->
+            <Image
+                Source="tomato.png"
+                HeightRequest="120"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Tomato logo for Pomodoro app" />
+
+            <!-- Title -->
+            <Label
+                Text="Configure Your Pomodoro"
+                Style="{StaticResource Headline}"
+                FontSize="24"
+                TextColor="#FF6347"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Configure your Pomodoro timer settings" />
+
+            <!-- Focus Time Section -->
+            <Frame
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    RowSpacing="5">
+                    <Label
+                        Text="Focus Time (min)"
+                        Style="{StaticResource SubHeadline}"
+                        TextColor="#4CAF50"
+                        VerticalOptions="Center"
+                        SemanticProperties.Description="Enter focus time in minutes" />
+                    <Entry
+                        x:Name="FocusTimeEntry"
+                        Grid.Column="1"
+                        Keyboard="Numeric"
+                        Placeholder="25"
+                        Text="25"
+                        FontSize="16"
+                        TextColor="#FF6347"
+                        PlaceholderColor="#FF9999"
+                        HorizontalOptions="FillAndExpand"
+                        SemanticProperties.Hint="Enter focus time in minutes" />
+                </Grid>
+            </Frame>
+
+            <!-- Short Break Section -->
+            <Frame
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    RowSpacing="5">
+                    <Label
+                        Text="Short Break (min)"
+                        Style="{StaticResource SubHeadline}"
+                        TextColor="#4CAF50"
+                        VerticalOptions="Center"
+                        SemanticProperties.Description="Enter short break time in minutes" />
+                    <Entry
+                        x:Name="ShortBreakEntry"
+                        Grid.Column="1"
+                        Keyboard="Numeric"
+                        Placeholder="5"
+                        Text="5"
+                        FontSize="16"
+                        TextColor="#FF6347"
+                        PlaceholderColor="#FF9999"
+                        HorizontalOptions="FillAndExpand"
+                        SemanticProperties.Hint="Enter short break time in minutes" />
+                </Grid>
+            </Frame>
+
+            <!-- Long Break Section -->
+            <Frame
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    RowSpacing="5">
+                    <Label
+                        Text="Long Break (min)"
+                        Style="{StaticResource SubHeadline}"
+                        TextColor="#4CAF50"
+                        VerticalOptions="Center"
+                        SemanticProperties.Description="Enter long break time in minutes" />
+                    <Entry
+                        x:Name="LongBreakEntry"
+                        Grid.Column="1"
+                        Keyboard="Numeric"
+                        Placeholder="15"
+                        Text="15"
+                        FontSize="16"
+                        TextColor="#FF6347"
+                        PlaceholderColor="#FF9999"
+                        HorizontalOptions="FillAndExpand"
+                        SemanticProperties.Hint="Enter long break time in minutes" />
+                </Grid>
+            </Frame>
+
+            <!-- Repetitions Section -->
+            <Frame
+                CornerRadius="10"
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    RowSpacing="5">
+                    <Label
+                        Text="Repetitions"
+                        Style="{StaticResource SubHeadline}"
+                        TextColor="#4CAF50"
+                        VerticalOptions="Center"
+                        SemanticProperties.Description="Enter number of focus sessions before a long break" />
+                    <Entry
+                        x:Name="RepetitionsEntry"
+                        Grid.Column="1"
+                        Keyboard="Numeric"
+                        Placeholder="4"
+                        Text="4"
+                        FontSize="16"
+                        TextColor="#FF6347"
+                        PlaceholderColor="#FF9999"
+                        HorizontalOptions="FillAndExpand"
+                        SemanticProperties.Hint="Enter number of focus sessions before a long break" />
+                </Grid>
+            </Frame>
+
+            <!-- Save Button -->
+            <Button
+                x:Name="SaveButton"
+                Text="Save Settings"
+                Clicked="SaveSettings_Clicked"
+                BackgroundColor="#FF6347"
+                TextColor="White"
+                FontSize="16"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="15,10"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Saves the Pomodoro timer settings" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
