@@ -2,7 +2,7 @@
 <Shell x:Class="PomodoroApp.AppShell"
        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:PomodoroApp"
+       xmlns:local="clr-namespace:PomodoroApp.Views"
        Title="PomodoroApp"
        Shell.FlyoutBehavior="Disabled"
        Shell.BackgroundColor="#FFF8E1">
@@ -28,7 +28,8 @@
             Margin="10">
             <VerticalStackLayout Spacing="10">
                 <Image Source="tomato.png" WidthRequest="100" Aspect="AspectFit" SemanticProperties.Description="Tomato logo for Pomodoro app" />
-                <Label Text="Stay Juicy!" Style="{StaticResource SubHeadline}" TextColor="#4CAF50" HorizontalTextAlignment="Center" SemanticProperties.Description="Pomodoro app footer" />
+                <Label Text="Stay Juicy!"
+                       Style="{StaticResource SubHeadline}" TextColor="#4CAF50" HorizontalTextAlignment="Center" SemanticProperties.Description="Pomodoro app footer" />
             </VerticalStackLayout>
         </Frame>
     </Shell.FlyoutFooter>

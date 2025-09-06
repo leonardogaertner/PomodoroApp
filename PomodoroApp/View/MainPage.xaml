@@ -1,14 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PomodoroApp.MainPage"
+             x:Class="PomodoroApp.Views.MainPage"
+             xmlns:viewmodels="clr-namespace:PomodoroApp.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
              Title="Pomodoro Timer"
              BackgroundColor="#FFF8E1">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,20"
-            Spacing="25">
-            <!-- App Logo -->
+        <VerticalStackLayout Padding="30,20" Spacing="25">
             <Image
                 Source="tomato.png"
                 HeightRequest="120"
@@ -16,7 +19,6 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Description="Tomato logo for Pomodoro app" />
 
-            <!-- Title -->
             <Label
                 Text="Pomodoro Timer"
                 Style="{StaticResource Headline}"
@@ -26,16 +28,14 @@
                 SemanticProperties.HeadingLevel="Level1"
                 SemanticProperties.Description="Main title of the Pomodoro Timer app" />
 
-            <!-- Subtitle -->
             <Label
-                Text="Boost your productivity with the Pomodoro technique"
+                Text="Aumente sua produtividade com a técnica Pomodoro"
                 Style="{StaticResource SubHeadline}"
                 TextColor="#4CAF50"
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Description of the Pomodoro technique for productivity" />
+                SemanticProperties.Description="Descrição da técnica Pomodoro para produtividade" />
 
-            <!-- Timer Display -->
             <Frame
                 CornerRadius="10"
                 Padding="15"
@@ -43,61 +43,68 @@
                 HasShadow="True"
                 Margin="0,10">
                 <Label
-                    x:Name="TimerLabel"
-                    Text="25:00"
+                    Text="{Binding TimerText}"
                     FontSize="48"
                     TextColor="#FF6347"
                     HorizontalOptions="Center"
-                    SemanticProperties.Description="Current time remaining in the Pomodoro timer" />
+                    SemanticProperties.Description="Tempo restante atual no temporizador Pomodoro" />
             </Frame>
 
-            <!-- Timer Controls -->
             <Frame
                 CornerRadius="10"
                 Padding="15"
                 BackgroundColor="White"
                 HasShadow="True"
                 Margin="0,10">
-                <HorizontalStackLayout
-                    Spacing="15"
-                    HorizontalOptions="Center">
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
                     <Button
-                        x:Name="StartButton"
-                        Text="Start"
-                        Clicked="StartTimer_Clicked"
+                        Text="Iniciar"
+                        Command="{Binding StartCommand}"
+                        IsEnabled="{Binding IsRunning, Converter={StaticResource InverseBoolConverter}}"
                         BackgroundColor="#FF6347"
                         TextColor="White"
                         FontSize="16"
                         FontAttributes="Bold"
                         CornerRadius="8"
                         Padding="15,10"
-                        SemanticProperties.Hint="Starts the Pomodoro timer" />
+                        SemanticProperties.Hint="Inicia o temporizador Pomodoro" />
                     <Button
-                        x:Name="PauseButton"
-                        Text="Pause"
-                        Clicked="PauseTimer_Clicked"
+                        Text="Pausar"
+                        Command="{Binding PauseCommand}"
+                        IsEnabled="{Binding IsRunning}"
                         BackgroundColor="#FF6347"
                         TextColor="White"
                         FontSize="16"
                         FontAttributes="Bold"
                         CornerRadius="8"
                         Padding="15,10"
-                        IsEnabled="False"
-                        SemanticProperties.Hint="Pauses the Pomodoro timer" />
+                        SemanticProperties.Hint="Pausa o temporizador Pomodoro" />
                     <Button
-                        x:Name="ResetButton"
-                        Text="Reset"
-                        Clicked="ResetTimer_Clicked"
+                        Text="Reiniciar"
+                        Command="{Binding ResetCommand}"
                         BackgroundColor="#FF6347"
                         TextColor="White"
                         FontSize="16"
                         FontAttributes="Bold"
                         CornerRadius="8"
                         Padding="15,10"
-                        IsEnabled="False"
-                        SemanticProperties.Hint="Resets the Pomodoro timer" />
+                        SemanticProperties.Hint="Reinicia o temporizador Pomodoro" />
                 </HorizontalStackLayout>
             </Frame>
+
+            <Button
+                Text="Configurações"
+                Command="{Binding GoToSettingsCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                FontSize="16"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="15,10"
+                SemanticProperties.Hint="Navegar para a página de configurações" />
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

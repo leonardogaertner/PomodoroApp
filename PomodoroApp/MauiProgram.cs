@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿// PomodoroApp/MauiProgram.cs
+
+using Microsoft.Extensions.Logging;
+using PomodoroApp.Views;
+using PomodoroApp.ViewModels;
 
 namespace PomodoroApp
 {
@@ -15,8 +19,16 @@ namespace PomodoroApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Registrar Views e ViewModels para injeção de dependência
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<Setup>();
+            builder.Services.AddSingleton<SetupViewModel>();
+            builder.Services.AddSingleton<Knowledge>();
+            builder.Services.AddSingleton<KnowledgeViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

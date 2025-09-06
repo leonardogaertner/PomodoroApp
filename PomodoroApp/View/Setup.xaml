@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PomodoroApp.Views.Setup"
+             xmlns:viewmodels="clr-namespace:PomodoroApp.ViewModels"
+             x:DataType="viewmodels:SetupViewModel"
+             Title="Pomodoro Settings"
+             BackgroundColor="#FFF8E1">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="InputLabelStyle">
+            <Setter Property="Style" Value="{StaticResource SubHeadline}" />
+            <Setter Property="TextColor" Value="#4CAF50" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
+        <Style TargetType="BoxView" x:Key="UnderlineStyle">
+            <Setter Property="HeightRequest" Value="2" />
+            <Setter Property="Color" Value="#4CAF50" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,20" Spacing="25">
+            <Image
+                Source="tomato.png"
+                HeightRequest="120"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Tomato logo for Pomodoro app" />
+
+            <Label
+                Text="Configure seu Pomodoro"
+                Style="{StaticResource Headline}"
+                FontSize="24"
+                TextColor="#FF6347"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Configure seu temporizador Pomodoro" />
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,5">
+                <Label Grid.Column="0" Text="Tempo de Foco (min)" Style="{StaticResource InputLabelStyle}" />
+                <Entry Grid.Column="1" Text="{Binding FocusTime}" Placeholder="25"
+                       TextColor="#FF6347" FontSize="20" Keyboard="Numeric"
+                       HorizontalTextAlignment="Center" 
+                       PlaceholderColor="#FF9999" BackgroundColor="Transparent"
+                       WidthRequest="120" HeightRequest="45"
+                       Margin="-5,0"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,5">
+                <Label Grid.Column="0" Text="Pausa Curta (min)" Style="{StaticResource InputLabelStyle}" />
+                <Entry Grid.Column="1" Text="{Binding ShortBreak}" Placeholder="5"
+                       TextColor="#FF6347" FontSize="20" Keyboard="Numeric"
+                       HorizontalTextAlignment="Center" 
+                       PlaceholderColor="#FF9999" BackgroundColor="Transparent"
+                       WidthRequest="120" HeightRequest="45"
+                       Margin="-5,0"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,5">
+                <Label Grid.Column="0" Text="Pausa Longa (min)" Style="{StaticResource InputLabelStyle}" />
+                <Entry Grid.Column="1" Text="{Binding LongBreak}" Placeholder="15"
+                       TextColor="#FF6347" FontSize="20" Keyboard="Numeric"
+                       HorizontalTextAlignment="Center" 
+                       PlaceholderColor="#FF9999" BackgroundColor="Transparent"
+                       WidthRequest="120" HeightRequest="45"
+                       Margin="-5,0"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10" Margin="0,5">
+                <Label Grid.Column="0" Text="Repetições" Style="{StaticResource InputLabelStyle}" />
+                <Entry Grid.Column="1" Text="{Binding Repetitions}" Placeholder="4"
+                       TextColor="#FF6347" FontSize="20" Keyboard="Numeric"
+                       HorizontalTextAlignment="Center" 
+                       PlaceholderColor="#FF9999" BackgroundColor="Transparent"
+                       WidthRequest="120" HeightRequest="45"
+                       Margin="-5,0"/>
+            </Grid>
+
+            <Button
+                Text="Salvar Configurações"
+                Command="{Binding SaveSettingsCommand}"
+                BackgroundColor="#FF6347"
+                TextColor="White"
+                FontSize="18"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="15,12"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"
+                SemanticProperties.Hint="Salva as configurações do temporizador Pomodoro" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

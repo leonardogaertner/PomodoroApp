@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PomodoroApp.Knowledge"
+             x:Class="PomodoroApp.Views.Knowledge"
+             xmlns:viewmodels="clr-namespace:PomodoroApp.ViewModels"
+             x:DataType="viewmodels:KnowledgeViewModel"
              Title="Tomato Knowledge"
              BackgroundColor="#FFF8E1">
+
+    <ContentPage.BindingContext>
+        <viewmodels:KnowledgeViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView>
         <VerticalStackLayout
             Padding="30,20"
             Spacing="25">
-            <!-- App Logo -->
+
             <Image
                 Source="tomato.png"
                 HeightRequest="120"
@@ -16,7 +23,6 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Description="Tomato logo for Pomodoro app" />
 
-            <!-- Title -->
             <Label
                 Text="Tomato Knowledge"
                 Style="{StaticResource Headline}"
@@ -26,26 +32,26 @@
                 SemanticProperties.HeadingLevel="Level1"
                 SemanticProperties.Description="Tomato Knowledge page title" />
 
-            <!-- Subtitle -->
             <Label
-                Text="Get inspired with productivity advice"
+                Text="Inspire-se com conselhos de produtividade"
                 Style="{StaticResource SubHeadline}"
                 TextColor="#4CAF50"
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Description of the Tomato Knowledge page" />
+                SemanticProperties.Description="Descrição da página Tomato Knowledge" />
 
-            <!-- Acquire Knowledge Button -->
             <Frame
                 CornerRadius="10"
                 Padding="15"
                 BackgroundColor="White"
                 HasShadow="True"
                 Margin="0,10">
+
                 <Button
                     x:Name="AcquireKnowledgeButton"
-                    Text="Acquire Tomato Knowledge"
-                    Clicked="AcquireKnowledge_Clicked"
+                    Text="Obter Conhecimento do Tomate"
+                    Command="{Binding AcquireKnowledgeCommand}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                     BackgroundColor="#FF6347"
                     TextColor="White"
                     FontSize="16"
@@ -53,25 +59,23 @@
                     CornerRadius="8"
                     Padding="15,10"
                     HorizontalOptions="Center"
-                    SemanticProperties.Hint="Fetches a random productivity advice" />
+                    SemanticProperties.Hint="Obtém um conselho de produtividade aleatório" />
             </Frame>
 
-            <!-- Advice Display -->
             <Frame
                 x:Name="AdviceFrame"
                 CornerRadius="10"
                 Padding="15"
                 BackgroundColor="White"
                 HasShadow="True"
-                Margin="0,10"
-                IsVisible="True">
+                Margin="0,10">
                 <Label
                     x:Name="AdviceLabel"
-                    Text="Click the button to get advice!"
+                    Text="{Binding AdviceText}"
                     FontSize="16"
                     TextColor="#FF6347"
                     HorizontalOptions="Center"
-                    SemanticProperties.Description="Random productivity advice" />
+                    SemanticProperties.Description="Conselho de produtividade aleatório" />
             </Frame>
         </VerticalStackLayout>
     </ScrollView>
